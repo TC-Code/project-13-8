@@ -9,14 +9,14 @@ server.on("request", function(request, response) {
       response.write(data);
       response.end();
     });
-  } else {
-    response.setHeader("Content-Type", "image/jpg");
-    response.statusCode = 404;
-    fs.readFile("./notfound.jpg", function(error, data) {
-      response.write(data);
-      response.end();
-    });
+    return
   }
+  response.setHeader("Content-Type", "image/jpg");
+  response.statusCode = 404;
+  fs.readFile("./notfound.jpg", function(error, data) {
+    response.write(data);
+    response.end();
+  });
 });
 
 server.listen(8080);
